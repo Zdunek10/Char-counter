@@ -1,12 +1,18 @@
 import java.io.File
+import java.io.IOException
 
 fun main(){
 
     // File name as and input where file should be located in TextDir directory in txt format)
     val file:String = readLine().toString()
     val read = TextReader()
-    read.returnNumberOfChars("TextDir/" + file)
-    read.readFile("TextDir/"  + file)
+
+    try {
+        read.returnNumberOfChars("TextDir/" + file)
+        read.readFile("TextDir/"  + file)
+    }catch (e: IOException){
+        print("Missing file in 'TextDir' directory, check it.")
+    }
 }
 
 class TextReader {
